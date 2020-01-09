@@ -1,4 +1,4 @@
-<body>
+  <body>
   <title>
     naveen's player
     </title>
@@ -26,29 +26,28 @@
 .vid{
   float:right;
 }
-
+</style>
   
-  </style>
-  <script>
+	<script>
    $('#paste').click(function() {
 if($('#paste').val()=="paste url"){
 $('#paste').val('');}});
 
 var youtubeIds=["KtqPip-qY7g"];
 function checker(){
+	alert("checker activated");
   var url=$('#paste').val();
   if (url != undefined || url != '') {        
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
         var match = url.match(regExp);
         if (match && match[2].length == 11){
           youtubeIds.push(match[2])
-        
-          
-            var x, i;
+ var x, i;
   x = document.querySelectorAll(".repo");
   for (i = 0; i < x.length; i++) {
     x[i].innerHTML = youtubeIds[i];
     x[i].href ="https://www.youtube.com/embed/"+youtubeIds[i];
+	  alert("url added")
     
   }
         } else {
@@ -93,10 +92,7 @@ autoplay: '0',
     }
 
   </script>
-  <body>
-  <title>
-    naveen's player
-    </title>
+
   <div style="padding:20px">
   <input id="paste" style="width:600px"text="text"value="paste url">
     <!--
