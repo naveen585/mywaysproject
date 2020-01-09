@@ -29,13 +29,9 @@
 </style>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
-   $('#paste').click(function() {
-if($('#paste').val()=="paste url"){
-$('#paste').val('');}});
 
 var youtubeIds=["KtqPip-qY7g"];
 function checker(){
-	alert("checker activated");
   var url=$('#paste').val();
   if (url != undefined || url != '') {        
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
@@ -47,7 +43,6 @@ function checker(){
   for (i = 0; i < x.length; i++) {
     x[i].innerHTML = youtubeIds[i];
     x[i].href ="https://www.youtube.com/embed/"+youtubeIds[i];
-	  alert("url added")
     
   }
         } else {
@@ -94,7 +89,7 @@ autoplay: '0',
   </script>
 
   <div style="padding:20px">
-  <input id="paste" style="width:600px"text="text"value="paste url">
+  <input id="paste" style="width:600px"text="text">
     <!--
       <button id="searchbutton" style="padding:2px 30px 2px 30px">search</button>
 -->
