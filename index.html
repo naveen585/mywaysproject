@@ -30,14 +30,14 @@
   
   </style>
   <script>
-    $('#paste').click(function() {
+   $('#paste').click(function() {
 if($('#paste').val()=="paste url"){
 $('#paste').val('');}});
 
 var youtubeIds=["KtqPip-qY7g"];
 function checker(){
   var url=$('#paste').val();
-  if (url != '') {        
+  if (url != undefined || url != '') {        
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
         var match = url.match(regExp);
         if (match && match[2].length == 11){
@@ -93,6 +93,10 @@ autoplay: '0',
     }
 
   </script>
+  <body>
+  <title>
+    naveen's player
+    </title>
   <div style="padding:20px">
   <input id="paste" style="width:600px"text="text"value="paste url">
     <!--
@@ -116,7 +120,10 @@ autoplay: '0',
        <a class="repo" href=# target="_blank">List 4</a><br>
        <a class="repo" href=# target="_blank">List 5</a><br>
        <a class="repo" href=# target="_blank">List 6</a><br>
-      </div>
+      
+
   </div>
-  <script src="https://www.youtube.com/iframe_api"></script>
+
+</div>
+	  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
