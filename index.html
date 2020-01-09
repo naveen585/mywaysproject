@@ -1,0 +1,122 @@
+<body>
+  <title>
+    naveen's player
+    </title>
+  <style>
+    body{
+  background-color: black;
+}
+.column {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  top: 0;
+  right:0;
+  background-color:black;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.repo{
+  text-decoration:none;
+  color:white;
+}
+.repo:hover{
+  font-size:30px;
+}
+.vid{
+  float:right;
+}
+
+  
+  </style>
+  <script>
+    $('#paste').click(function() {
+if($('#paste').val()=="paste url"){
+$('#paste').val('');}});
+
+var youtubeIds=["KtqPip-qY7g"];
+function checker(){
+  var url=$('#paste').val();
+  if (url != '') {        
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[2].length == 11){
+          youtubeIds.push(match[2])
+        
+          
+            var x, i;
+  x = document.querySelectorAll(".repo");
+  for (i = 0; i < x.length; i++) {
+    x[i].innerHTML = youtubeIds[i];
+    x[i].href ="https://www.youtube.com/embed/"+youtubeIds[i];
+    
+  }
+        } else {
+            alert('not valid');
+        }
+  }
+  
+}
+
+var watcher, presentId = 0;
+    function onYouTubeIframeAPIReady() {
+     
+        watcher = new YT.Player('video-placeholder', {
+            height: '2',
+            width: '3',
+	playerVars: { 'rel': 0, 'autoplay': 0 },
+autoplay: '0',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+    function onPlayerReady(event) {
+        event.target.loadVideoById(youtubeIds[presentId]);
+    }
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+          youtubeIds.shift()
+             var x, i;
+  x = document.querySelectorAll(".repo");
+  for (i = 0; i < x.length; i++) {
+    x[i].innerHTML = youtubeIds[i];
+    x[i].href ="https://www.youtube.com/embed/"+youtubeIds[i];
+    
+  }
+            presentId++;
+            if (presentId < youtubeIds.length) {
+                event.target.loadVideoById(youtubeIds[presentId]);
+            }
+        }
+    }
+
+  </script>
+  <div style="padding:20px">
+  <input id="paste" style="width:600px"text="text"value="paste url">
+    <!--
+      <button id="searchbutton" style="padding:2px 30px 2px 30px">search</button>
+-->
+    <button id="check" onclick="checker()" style="padding:2px 30px 2px 30px">add the url</button>
+  </div>
+   <h2 align="center" style="color:white">a song plays by deafult..add your own songs to the list by pasting the url so that the song ID is generated</h2>
+  
+   <h2 align="center" style="color:white">the song ID of default song is " KtqPip-qY7g "</h2>
+   
+<div id="video-placeholder" class="vid"></div>
+  <!--for playlist -->
+ <div class="column">
+    <h2 align="center" style="color:white">Playlists</h2>
+   
+    <div align="center">
+      <a class="repo" href=# target="_blank">List 1</a><br>
+      <a class="repo" href=# target="_blank">List 2</a><br>
+       <a class="repo" href=# target="_blank">List 3</a><br>
+       <a class="repo" href=# target="_blank">List 4</a><br>
+       <a class="repo" href=# target="_blank">List 5</a><br>
+       <a class="repo" href=# target="_blank">List 6</a><br>
+      </div>
+  </div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
